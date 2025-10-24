@@ -2,8 +2,7 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import styles from "./Login.module.css";
 
 export default function Login() {
@@ -67,7 +66,6 @@ export default function Login() {
           {loading ? "Logger ind..." : "Log ind"}{" "}
         </button>
       </form>
-      <ToastContainer position="top-center" auto-Close={2500} />
     </div>
   );
 }

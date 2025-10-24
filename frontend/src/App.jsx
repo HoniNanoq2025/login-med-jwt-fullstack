@@ -12,6 +12,8 @@ import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
 import NavBar from "./components/NavBar/NavBar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Layout() {
   const location = useLocation();
@@ -57,6 +59,7 @@ export default function App() {
   return (
     <Router>
       <Layout />
+      <ToastContainer position="top-center" autoClose={2500} />
     </Router>
   );
 }

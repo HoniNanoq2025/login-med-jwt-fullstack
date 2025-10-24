@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import styles from "./Profile.module.css";
 
 export default function Profile() {
@@ -70,8 +69,6 @@ export default function Profile() {
       <button onClick={onLogout} className={styles.logoutBtn}>
         Log ud
       </button>
-
-      <ToastContainer position="top-center" autoClose={2500} />
     </div>
   );
 }
