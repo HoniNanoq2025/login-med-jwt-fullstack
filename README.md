@@ -17,3 +17,6 @@ after npm install to install react, these npm packages were also added:
 
 npm i @uidotdev/usehooks sass jwt-decode react-icons react-router-dom react-toastify
 
+I removed the redundant , from main.jsx, that is there when creating the Vite project.
+
+I added justify-content: center to body in index.css to center content

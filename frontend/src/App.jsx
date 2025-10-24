@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
@@ -10,10 +11,15 @@ import EditorPanel from "./components/EditorPanel/EditorPanel";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import Unauthorized from "./components/Unauthorized/Unauthorized";
+import NavBar from "./components/NavBar/NavBar";
 
-export default function App() {
+function Layout() {
+  const location = useLocation();
+  const hideNavBarPaths = ["/login", "/unauthorized"];
+
   return (
-    <Router>
+    <>
+      {!hideNavBarPaths.includes(location.pathname) && <NavBar />}
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
@@ -43,6 +49,14 @@ export default function App() {
           }
         />
       </Routes>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <Layout />
     </Router>
   );
 }
