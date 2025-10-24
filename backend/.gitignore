@@ -1,0 +1,7 @@
+# Node.js
+node_modules
+
+# Miljøfilter
+server/.env
+server/.env.local
+server/.env.*.local
