@@ -1,5 +1,5 @@
 import { useLocalStorage } from "@uidotdev/usehooks";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [, setToken] = useState("token", null);
+  const [, setToken] = useLocalStorage("token", null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -62,7 +62,9 @@ export default function Login() {
           required
         />
 
-        <button type="submit">Log ind</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Logger ind..." : "Log ind"}{" "}
+        </button>
       </form>
       <ToastContainer position="top-center" auto-Close={2500} />
     </div>
