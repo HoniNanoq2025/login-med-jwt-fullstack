@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styles from "./Login.module.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ export default function Login() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="email"
           placeholder="Email"
@@ -62,7 +63,7 @@ export default function Login() {
           required
         />
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className={styles.loginBtn}>
           {loading ? "Logger ind..." : "Log ind"}{" "}
         </button>
       </form>

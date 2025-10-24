@@ -1,20 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLocalStorage } from "@uidotdev/usehooks";
+import { toast } from "react-toastify";
+import styles from "./NavBar.module.css";
 
 export default function NavBar() {
+  const [, setToken] = useLocalStorage("token", null);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setToken(null);
+    toast.info("Du er nu logget ud");
+    navigate("/login");
+  };
   return (
-    <nav className="nav">
-      <Link to="/profile" className="link">
+    <nav className={styles.nav}>
+      <Link to="/profile" className={styles.link}>
         Profil
       </Link>
-      <Link to="/editor" className="link">
+      <Link to="/editor" className={styles.link}>
         Editor
       </Link>
-      <Link to="/admin" className="link">
+      <Link to="/admin" className={styles.link}>
         Admin
       </Link>
-      <Link to="/login" className="link">
+      <button onClick={handleLogout} className={styles.logout}>
         Log ud
-      </Link>
+      </button>
     </nav>
   );
 }
